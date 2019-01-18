@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+  {% if form.errors %}
+    <p class="error">Сожалеем, вы неправильно ввели логин или пароль</p>
+  {% endif %}
+  <form action='' method='post'>
+      {% csrf_token %}
+      <div>
+          <label>Логин:</label>
+          {{ form.username }}
+      </div>
+      <br>
+      <div>
+          <label>Пароль:</label>
+          {{ form.password }}
+      </div>
+            <input type="submit" value="Войти" />
+            <a href='register'>Зарегистрируйтесь!</a>
+  </form>
+</div>
+{% endblock %}

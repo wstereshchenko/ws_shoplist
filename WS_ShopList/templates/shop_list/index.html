@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+List
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <hr>
+    <h1>Добавить новый список</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label>Название списка</label>
+        {{ form.title }} <br>
+        <label>Содержание списка</label><br>
+        {{ form.body }}<br>
+        <input type="submit" value="Добавить" />
+    </form>
+    <hr>
+    <h1>Лист покупок {{ user.username }}</h1>
+    {% if posts %}
+    {% for post in posts %}
+    <div>
+        <a>{{ post.title }}</a> - {{ post.publish }} <br>
+        {{ post.body }}
+    </div>
+    {% endfor %}
+    {% else %}
+    Записей пока нет
+    {% endif %}
+</div>
+{% endblock %}
